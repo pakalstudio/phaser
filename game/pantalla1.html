@@ -16,30 +16,35 @@
 
 <script>
     const config = {
+        
         type: Phaser.AUTO,
         width: 800,
         height: 600,
         scene: {
+
             preload: preload,
             create: create
+
+
         }
     };
 
     const game = new Phaser.Game(config);
 
     function preload() {
-        this.load.image('bienvenido', 'botones/bienvenido.png');
+        this.load.image('fondo_incio', 'fondos de escenas/fondo_inicio.png');
         this.load.image('boton_entrar', 'botones/boton_entrar.png');
         this.load.image('boton_cargar', 'botones/boton_cargar.png');
         this.load.image('boton_salir', 'botones/boton_salir.png');
+        this.load.image('bienvenido', 'botones/bienvenido.png');
     }
 
     function create() {
         // Fondo de la pantalla de inicio
-        this.add.image(400, 100, 'bienvenido', { fontSize: '32px', fill: '#fff' }).setOrigin(0.5);
+        this.add.image(400, 300, 'fondo_incio').setOrigin(0.5);
 
         // Botón "Entrar"
-        const entrarButton = this.add.image(400, 200, 'boton_entrar')
+        const entrarButton = this.add.image(430, 220, 'boton_entrar')
             .setOrigin(0.5)
             .setInteractive()
             .on('pointerdown', () => {
@@ -48,7 +53,7 @@
             });
 
         // Botón "Cargar"
-        const cargarButton = this.add.image(400, 300, 'boton_cargar')
+        const cargarButton = this.add.image(430, 300, 'boton_cargar')
             .setOrigin(0.5)
             .setInteractive()
             .on('pointerdown', () => {
@@ -57,7 +62,7 @@
             });
 
         // Botón "Salir"
-        const salirButton = this.add.image(400, 400, 'boton_salir')
+        const salirButton = this.add.image(430, 380, 'boton_salir')
             .setOrigin(0.5)
             .setInteractive()
             .on('pointerdown', () => {

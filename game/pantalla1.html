@@ -28,6 +28,7 @@
     const game = new Phaser.Game(config);
 
     function preload() {
+        this.load.image('bienvenido', 'botones/bienvenido.png');
         this.load.image('boton_entrar', 'botones/boton_entrar.png');
         this.load.image('boton_cargar', 'botones/boton_cargar.png');
         this.load.image('boton_salir', 'botones/boton_salir.png');
@@ -35,7 +36,7 @@
 
     function create() {
         // Fondo de la pantalla de inicio
-        this.add.text(400, 100, 'Bienvenido al Juego', { fontSize: '32px', fill: '#fff' }).setOrigin(0.5);
+        this.add.image(400, 100, 'bienvenido', { fontSize: '32px', fill: '#fff' }).setOrigin(0.5);
 
         // Botón "Entrar"
         const entrarButton = this.add.image(400, 200, 'boton_entrar')

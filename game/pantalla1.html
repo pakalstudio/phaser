@@ -28,6 +28,7 @@
     const game = new Phaser.Game(config);
 
     function preload() {
+        this.load.image('boton_entrar', 'botones/boton_entrar.png');
         this.load.image('boton_cargar', 'botones/boton_cargar.png');
         this.load.image('boton_salir', 'botones/boton_salir.png');
     }
@@ -37,7 +38,7 @@
         this.add.text(400, 100, 'Bienvenido al Juego', { fontSize: '32px', fill: '#fff' }).setOrigin(0.5);
 
         // Botón "Entrar"
-        const entrarButton = this.add.image(400, 250, 'boton_cargar')
+        const entrarButton = this.add.image(400, 200, 'boton_entrar')
             .setOrigin(0.5)
             .setInteractive()
             .on('pointerdown', () => {
@@ -46,8 +47,7 @@
             });
 
         // Botón "Cargar"
-        this.add.image(200, 500, 'boton_cargar');
-        const cargarButton = this.add.text(400, 300, 'Cargar', { fontSize: '24px', fill: '#fff' })
+        const cargarButton = this.add.image(400, 300, 'boton_cargar')
             .setOrigin(0.5)
             .setInteractive()
             .on('pointerdown', () => {
@@ -56,7 +56,7 @@
             });
 
         // Botón "Salir"
-        const salirButton = this.add.text(400, 350, 'Salir', { fontSize: '24px', fill: '#fff' })
+        const salirButton = this.add.image(400, 400, 'boton_salir')
             .setOrigin(0.5)
             .setInteractive()
             .on('pointerdown', () => {

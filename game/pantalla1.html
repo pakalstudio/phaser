@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pantalla de Inicio del Juego</title>
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+
+<script>
+    const config = {
+        type: Phaser.AUTO,
+        width: 800,
+        height: 600,
+        scene: {
+            preload: preload,
+            create: create
+        }
+    };
+
+    const game = new Phaser.Game(config);
+
+    function preload() {
+        this.load.image('boton_entrar', 'game\botones\boton_cargar');
+    }
+
+    function create() {
+        // Fondo de la pantalla de inicio
+        this.add.text(400, 100, 'Bienvenido al Juego', { fontSize: '32px', fill: '#fff' }).setOrigin(0.5);
+
+        // Botón "Entrar"
+        const entrarButton = this.add.text(400, 250, 'Entrar', { fontSize: '24px', fill: '#fff' })
+            .setOrigin(0.5)
+            .setInteractive()
+            .on('pointerdown', () => {
+                // Inicia el juego
+                iniciarJuego();
+            });
+
+        // Botón "Cargar"
+        const cargarButton = this.add.text(400, 300, 'Cargar', { fontSize: '24px', fill: '#fff' })
+            .setOrigin(0.5)
+            .setInteractive()
+            .on('pointerdown', () => {
+                // Lógica para cargar una partida
+                cargarPartida();
+            });
+
+        // Botón "Salir"
+        const salirButton = this.add.text(400, 350, 'Salir', { fontSize: '24px', fill: '#fff' })
+            .setOrigin(0.5)
+            .setInteractive()
+            .on('pointerdown', () => {
+                // Lógica para salir del juego
+                salirJuego();
+            });
+    }
+
+    function iniciarJuego() {
+        console.log("Juego iniciado.");
+        // Aquí puedes cambiar a la escena del juego principal
+    }
+
+    function cargarPartida() {
+        console.log("Cargar partida.");
+        // Aquí puedes implementar la lógica para cargar una partida guardada
+    }
+
+    function salirJuego() {
+        console.log("Juego cerrado.");
+        // Aquí puedes implementar la lógica para salir del juego
+        window.close();
+    }
+</script>
+
+</body>
+</html>

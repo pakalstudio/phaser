@@ -7,7 +7,7 @@
     <script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.min.js"></script>
     <style>
         body {
-            margin: 0;
+            margin: 10;
             padding: 0;
         }
     </style>
@@ -28,7 +28,7 @@
     const game = new Phaser.Game(config);
 
     function preload() {
-        this.load.image('boton_entrar', 'game\botones\boton_cargar');
+        this.load.image('boton_cargar', 'game/botones/boton_cargar.png');
     }
 
     function create() {

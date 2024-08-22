@@ -23,7 +23,7 @@
         {
             this.add.image(400, 500, 'sky');
             this.particulas = this.add.particles(1,1, 'red', {
-                speed: 1,
+                speed: 20,
                 scale: { start: 1, end: 0 },
                 blendMode: 'ADD'
             });
@@ -32,6 +32,7 @@
             this.logo.setVelocity(20, 20);
             this.logo.setBounce(1, 1);
             this.logo.setCollideWorldBounds(true);
+            this.particulas.startFollow(this.logo);
 
             
              
@@ -42,7 +43,7 @@
             
             let randomScale = this.particulas.scale + 0.005;
             this.particulas.scale = randomScale;
-            this.particulas.startFollow(this.logo);
+            
             console.log( this.particulas.scale );
         }
 

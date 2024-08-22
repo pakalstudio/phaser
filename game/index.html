@@ -22,8 +22,8 @@
         create ()
         {
             this.add.image(400, 500, 'sky');
-            this.particulas = this.add.particles(10,10, 'red', {
-                speed: 200,
+            this.particulas = this.add.particles(1,1, 'red', {
+                speed: 20,
                 scale: { start: 1, end: 0 },
                 blendMode: 'ADD'
             });
@@ -32,25 +32,25 @@
             this.logo.setVelocity(20, 20);
             this.logo.setBounce(1, 1);
             this.logo.setCollideWorldBounds(true);
-
             this.particulas.startFollow(this.logo);
+            //this.particulas.setBounce(1,1);
+
+            
              
         }
 
 
         randomizarParticulas () {
             
-            let randomScale = Math.random() * 2 ;
-            let randomVelocidad = Math.random() * 20;
-            this.particulas.scaleX = randomScale;
-            this.particulas.scaleY = randomScale;
-            this.particulas.speed = randomVelocidad;
-            //console.log( this.particulas.scale);
+            let randomScale = this.particulas.scale + 0.005;
+            this.particulas.scale = randomScale;
+            
+            console.log( this.particulas.scale );
         }
 
         update(){
 
-            this.randomizarParticulas();
+            //this.randomizarParticulas();
         }
 
        

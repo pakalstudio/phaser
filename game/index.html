@@ -33,7 +33,7 @@
             this.logo.setBounce(1, 1);
             this.logo.setCollideWorldBounds(true);
 
-            this.particulas.startFollow(this.logo);
+            
              
         }
 
@@ -42,6 +42,7 @@
             
             let randomScale = this.particulas.scale + 0.005;
             this.particulas.scale = randomScale;
+            this.particulas.startFollow(this.logo);
             console.log( this.particulas.scale );
         }
 

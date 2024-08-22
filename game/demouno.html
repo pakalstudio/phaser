@@ -21,8 +21,26 @@
                 { frameWidth: 32, frameHeight: 48 }
             );
             this.load.spritesheet('tiburon',
-                'personajes/tiburon11.png',
-                { frameWidth: 32, frameHeight: 48 }
+                'personajes/arriba1.png',
+                { frameWidth: 150, frameHeight: 150 }
+            );
+
+            this.load.spritesheet('tiburon_izq',
+                'personajes/tiburon_izq.png',
+                { frameWidth: 150, frameHeight: 150 }
+            );
+
+            this.load.spritesheet('tiburon_der',
+                'personajes/tiburon_der.png',
+                { frameWidth: 150, frameHeight: 150 }
+            );
+            this.load.spritesheet('tiburon_arriba',
+                'personajes/tiburon_arriba.png',
+                { frameWidth: 150, frameHeight: 150 }
+            );
+            this.load.spritesheet('tiburon_abajo',
+                'personajes/tiburon_arriba.png',
+                { frameWidth: 150, frameHeight: 150 }
             );
 
             this.plataformas = {};
@@ -33,16 +51,16 @@
 
     create () 
     {
-        this.add.image(400, 300, 'sky');
+        this.add.image(1000, 300, 'sky');
         this.add.image(400, 300, 'star');
         
         this.add.image(400, 300, 'sky');
 
         this.plataformas = this.physics.add.staticGroup();
 
-        this.plataformas.create(400, 568, 'ground').setScale(2).refreshBody();
+        this.plataformas.create(452, 568, 'ground').setScale(2).refreshBody();
 
-        this.plataformas.create(600, 400, 'ground');
+        this.plataformas.create(1000, 400, 'ground');
         this.plataformas.create(50, 250, 'ground');
         this.plataformas.create(750, 220, 'ground');
 
@@ -55,23 +73,39 @@
 
         this.anims.create({
             key: 'left',
-            frames: this.anims.generateFrameNumbers('tiburon', { start: 0, end: 3 }),
+            frames: this.anims.generateFrameNumbers('tiburon_izq', { start: 0, end: 3 }),
             frameRate: 10,
             repeat: -1
         });
 
         this.anims.create({
             key: 'turn',
-            frames: [ { key: 'tiburon', frame: 4 } ],
+            frames: [ { key: 'tiburon', frame: 0 } ],
             frameRate: 20
         });
 
         this.anims.create({
             key: 'right',
-            frames: this.anims.generateFrameNumbers('tiburon', { start: 5, end: 8 }),
+            frames: this.anims.generateFrameNumbers('tiburon_der', { start: 0, end: 3 }),
             frameRate: 10,
             repeat: -1
         });
+
+        this.anims.create({
+            key: 'up',
+            frames: this.anims.generateFrameNumbers('tiburon_arriba', { start: 0, end: 3 }),
+            frameRate: 10,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'down',
+            frames: this.anims.generateFrameNumbers('tiburon_abajo', { start: 0, end: 3 }),
+            frameRate: 10,
+            repeat: -1
+        });
+
+        
 
         this.estrellas = this.physics.add.group({
             key: 'star',
@@ -120,11 +154,10 @@
         }
 
         if(this.controles.space.isDown){
-            this.mono.setVelocityY(-200);
+            this.mono.setVelocityY(-100);
+            this.mono.anims.play('up');
         }
-        if(this.controles.space.isUp){
-            this.mono.setVelocityY(200);
-        }
+        
 
         if (this.controles.up.isDown && this.mono.body.touching.down)
         {
@@ -135,7 +168,7 @@
 
     var config = {
         type: Phaser.AUTO,
-        width: 800,
+        width: 1024,
         height: 600,
         physics: {
             default: 'arcade',
